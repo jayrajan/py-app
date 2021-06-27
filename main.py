@@ -4,6 +4,8 @@
 
 
 print('hello py-world\n')
+c = 10
+b = 11
 
 
 
