@@ -42,15 +42,20 @@ class TBGUI(qtw.QWidget):
         self.name_box.setFont(gui.QFont("Arial",12))
         self.project_name_box = qtw.QLineEdit()
         self.project_name_box.setFont(gui.QFont("Arial",12))
-        self.date_box = qtw.QLineEdit()
-        self.date_box.setFont(gui.QFont("Arial",12))
+        self.from_date_box = qtw.QLineEdit()
+        self.from_date_box.setFont(gui.QFont("Arial",12))
+        self.to_date_box = qtw.QLineEdit()
+        self.to_date_box.setFont(gui.QFont("Arial",12))
+
+        
         self.hours_box = qtw.QLineEdit()
         self.hours_box.setFont(gui.QFont("Arial",12))
 
         
         self.form_layout.addRow('Name',self.name_box)
         self.form_layout.addRow('Project Name',self.project_name_box)
-        self.form_layout.addRow('Date',self.date_box)
+        self.form_layout.addRow('From Date',self.from_date_box)
+        self.form_layout.addRow('To Date',self.to_date_box)
         self.form_layout.addRow('Hours',self.hours_box)
 
         
@@ -72,7 +77,8 @@ class TBGUI(qtw.QWidget):
     def clear_items(self):
         self.name_box.clear()
         self.project_name_box.clear()
-        self.date_box.clear()
+        self.from_date_box.clear()
+        self.to_date_box.clear()
         self.hours_box.clear()
         self.clear_status = True
 
