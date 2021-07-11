@@ -24,6 +24,7 @@ class TBGUI(qtw.QWidget):
         self.width = 840
         self.height = 480
         self.initUI()
+        self.clear_status = False
 
 
     def initUI(self):
@@ -33,34 +34,52 @@ class TBGUI(qtw.QWidget):
         # LAYOUTS
         self.main_layout = qtw.QVBoxLayout(self)
         self.form_layout = qtw.QFormLayout(self)
+        self.button_layout = qtw.QHBoxLayout(self)
 
 
-        # main_header = qtw.QLabel("Time-Booking System",self)
-        # self.form_layout.addWidget(main_header)
+        # input form 
+        self.name_box = qtw.QLineEdit()
+        self.name_box.setFont(gui.QFont("Arial",12))
+        self.project_name_box = qtw.QLineEdit()
+        self.project_name_box.setFont(gui.QFont("Arial",12))
+        self.date_box = qtw.QLineEdit()
+        self.date_box.setFont(gui.QFont("Arial",12))
+        self.hours_box = qtw.QLineEdit()
+        self.hours_box.setFont(gui.QFont("Arial",12))
+
         
-        # col_name =qtw.QLabel("Name",self)
-        name_box = qtw.QLineEdit()
-        name_box.setFont(gui.QFont("Arial",12))
-        project_name_box = qtw.QLineEdit()
-        project_name_box.setFont(gui.QFont("Arial",12))
-        date_box = qtw.QLineEdit()
-        date_box.setFont(gui.QFont("Arial",12))
-        hours_box = qtw.QLineEdit()
-        hours_box.setFont(gui.QFont("Arial",12))
+        self.form_layout.addRow('Name',self.name_box)
+        self.form_layout.addRow('Project Name',self.project_name_box)
+        self.form_layout.addRow('Date',self.date_box)
+        self.form_layout.addRow('Hours',self.hours_box)
 
+        
+        # button
+        self.save_button = qtw.QPushButton('Save', self)
+        self.save_button.clicked.connect(self.save_items)
+        self.button_layout.addWidget(self.save_button)
 
-
-        self.form_layout.addRow('Name',name_box)
-        self.form_layout.addRow('Project Name',project_name_box)
-        self.form_layout.addRow('Date',date_box)
-        self.form_layout.addRow('Hours',hours_box)
+        self.clear_button = qtw.QPushButton('Clear', self)
+        self.clear_button.clicked.connect(self.clear_items)
+        self.button_layout.addWidget(self.clear_button)
 
 
         #Nesting Layouts
         self.main_layout.addLayout(self.form_layout)
+        self.main_layout.addLayout(self.button_layout)
 
 
+    def clear_items(self):
+        self.name_box.clear()
+        self.project_name_box.clear()
+        self.date_box.clear()
+        self.hours_box.clear()
+        self.clear_status = True
 
+        return self.clear_status
+
+    def save_items(self):
+        pass
 
 
 def main():
